@@ -118,9 +118,39 @@ export default function Navigation() {
 
 > `use client` 지시어를 사용한다는 것은 서버에서 render 된 후 front에서 hydrate된다는 것을 의미한다(client에서만 render된다는 의미가 아님).
 > 이는 클라이언트가 JS를 더 적게 다운로드받아도 된다는 의미가 된다. -> 페이지 로딩 속도 빨라짐
-> 반면, `use client` 지시어가 없는 컴포넌트는 server component이다.
+> 이번 버전에는 모든 component가 hydrate 되었음
+> 반면, NextJS 14에서 `use client` 지시어가 없는 컴포넌트는 server component로, hydrate 되지 않음.
 
 ## Server Component, Client Component
 
 - server component 안에 client component를 포함시킬 수 있는 반면, 그 반대는 안 됨.
 - 쉽게 말해서 NextJS 14에서의 server component는 흰색 물감, client component는 검정색 물감으로 비유할 수 있음(추후 업데이트하면서 어떻게 바뀔지는 미지수임). 흰색 물감 위에 다른 색을 덫칠할 수 있지만, 검정색 물감 위에 다른 색을 덫칠할 수 없음.
+
+## Layouts
+
+- initialize Next.js --> render Layout --> check URL --> render Page
+
+```tsx
+<html>
+  <body>
+    <RootLayout>
+      <Pages />
+    </RootLayout>
+  </body>
+</html>
+```
+
+- 특정 페이지에만 해당하는 layout을 추가할 수 있음(예 : `/app/about/layout.tsx`)(대체가 아님)
+- 페이지 단위의 layout은 하위 페이지까지 적용됨
+
+```tsx
+<html>
+  <body>
+    <RootLayout>
+      <PageLayout>
+        <Page />
+      </PageLayout>
+    </RootLayout>
+  </body>
+</html>
+```
