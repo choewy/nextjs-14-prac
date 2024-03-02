@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export type PageParamsProps<
   Params extends Record<string, string> = {},
   SearchParams extends Record<string, string | string[]> = {},
@@ -5,3 +7,5 @@ export type PageParamsProps<
   params: Params;
   searchParams: SearchParams;
 };
+
+export type SetState<T> = Dispatch<SetStateAction<T>>;

@@ -15,7 +15,7 @@
     "plugins": [{ "name": "next" }],
     "baseUrl": ".",
     "paths": {
-      "@constants": ["src/constant"],
+      "@constants": ["src/constants"],
       "@components": ["src/components"],
       "@services": ["src/services"],
       "@hooks": ["src/hooks"]
