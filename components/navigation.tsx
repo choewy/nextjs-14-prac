@@ -4,7 +4,7 @@ import { PageStaticPath } from '../constants';
 
 export default function Navigation() {
   return (
-    <div>
+    <nav>
       <ul>
         <li>
           <Link href={PageStaticPath.Home}>Home</Link>
@@ -13,6 +13,6 @@ export default function Navigation() {
           <Link href={PageStaticPath.About}>About</Link>
         </li>
       </ul>
-    </div>
+    </nav>
   );
 }
