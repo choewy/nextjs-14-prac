@@ -11,10 +11,5 @@ const moviesService = new MoviesService();
 export default async function MoviesPage() {
   const movies = await moviesService.getMovies({ lazySeconds: 3 });
 
-  return (
-    <div>
-      <h1>Movies Page</h1>
-      <div>{JSON.stringify(movies, null, 2)}</div>
-    </div>
-  );
+  return <div>{JSON.stringify(movies, null, 2)}</div>;
 }
