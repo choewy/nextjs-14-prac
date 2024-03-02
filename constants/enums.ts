@@ -6,5 +6,9 @@ export enum PageStaticPath {
 }
 
 export enum PageDynamicPath {
-  Movies = '/movies/:id',
+  Movie = '/movies/:id',
+  MovieCredits = '/movies/:id/credits',
+  MovieVideos = '/movies/:id/videos',
+  MovieProviders = '/movies/:id/providers',
+  MovieSimilar = '/movies/:id/similar',
 }
