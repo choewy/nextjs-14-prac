@@ -154,3 +154,10 @@ export default function Navigation() {
   </body>
 </html>
 ```
+
+## Route Groups & Metadata
+
+- route groups는 폴더명을 괄호로 묶어주어야 한다.
+- 괄호로 묶어준 폴더는 라우팅에 영향을 받지 않는다.
+- Metadata는 대체가 아니라 병합이다.
+- Page마다 Metadata를 설정할 수 있고, Layout에서 페이지에 따른 metadata generation까지 가증하다.

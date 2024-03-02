@@ -25,6 +25,13 @@ export default function Navigation() {
           <Link href={PageStaticPath.About}>
             About {hereIcon(PageStaticPath.About)}
           </Link>
+          <ul>
+            <li>
+              <Link href={PageStaticPath.Sales}>
+                Sales {hereIcon(PageStaticPath.Sales)}
+              </Link>
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>
