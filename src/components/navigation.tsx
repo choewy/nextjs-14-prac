@@ -1,37 +1,26 @@
 'use client';
 
 import Link from 'next/link';
-
-import { PageStaticPath } from '../constants';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+
+import { PageStaticPath } from '@constants';
+
+import styles from '../styles/navigation.module.css';
 
 export default function Navigation() {
   const pathname = usePathname();
   const hereIcon = (path: PageStaticPath) => (pathname === path ? '👈' : '');
 
-  const [count, setCount] = useState<number>(0);
-
   return (
-    <nav>
-      <button onClick={() => setCount((prev) => prev + 1)}>{count}</button>
+    <nav className={styles.nav}>
       <ul>
         <li>
-          <Link href={PageStaticPath.Home}>
-            Home {hereIcon(PageStaticPath.Home)}
-          </Link>
+          <Link href={PageStaticPath.Home}>Home</Link>
+          {hereIcon(PageStaticPath.Home)}
         </li>
         <li>
-          <Link href={PageStaticPath.About}>
-            About {hereIcon(PageStaticPath.About)}
-          </Link>
-          <ul>
-            <li>
-              <Link href={PageStaticPath.Sales}>
-                Sales {hereIcon(PageStaticPath.Sales)}
-              </Link>
-            </li>
-          </ul>
+          <Link href={PageStaticPath.About}>About</Link>
+          {hereIcon(PageStaticPath.About)}
         </li>
       </ul>
     </nav>

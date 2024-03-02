@@ -1,5 +1,7 @@
 import { MoviesService } from '@services';
 
+import styles from '../../../../../styles/movie-videos.module.css';
+
 import { MoviePageProps } from '../types';
 
 export default async function MovideVideos({ params }: MoviePageProps) {
@@ -7,13 +9,16 @@ export default async function MovideVideos({ params }: MoviePageProps) {
   const videos = await moviesService.getVideos(params.id, { lazySeconds: 1 });
 
   return (
-    <div>
-      <h3>Videos</h3>
-      <ul>
-        {videos.map((video) => (
-          <li key={video.id}>{video.name}</li>
-        ))}
-      </ul>
+    <div className={styles.container}>
+      {videos.map((video) => (
+        <iframe
+          key={video.id}
+          src={`https://youtube.com/embed/${video.key}`}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title={video.name}
+        />
+      ))}
     </div>
   );
 }

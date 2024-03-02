@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
 
 import { MoviesService } from '@services';
-import { PageStaticPath } from '@constants';
+
+import styles from '../../styles/home.module.css';
+import Movie from './components/movie';
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -13,13 +14,9 @@ export default async function HomePage() {
   const movies = await moviesService.getMovies({ lazySeconds: 1 });
 
   return (
-    <div>
+    <div className={styles.container}>
       {movies.map((movie) => (
-        <li key={movie.id}>
-          <Link href={`${PageStaticPath.Movies}/${movie.id}`}>
-            [{movie.id}] {movie.title}
-          </Link>
-        </li>
+        <Movie key={movie.id} movie={movie} />
       ))}
     </div>
   );
