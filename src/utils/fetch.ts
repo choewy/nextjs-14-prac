@@ -42,8 +42,6 @@ export class Fetch {
     return new Promise(async (resolve) => {
       const url = this.createUrlWithPath(String(opt?.path ?? ''), opt?.params);
 
-      console.log(url);
-
       setTimeout(() => {
         fetch(url, {
           method,
