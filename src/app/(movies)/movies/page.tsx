@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { MovieModel } from '@constants';
+import { MovieModel } from '@types';
 import { useFetchMovies } from '@hooks';
 
 export default function MoviesPage() {
