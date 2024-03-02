@@ -1,29 +1,17 @@
-import { PageParamsProps } from '@types';
-import { MoviesService } from '@services';
+import { Suspense } from 'react';
 
-import { MoviePageParams } from './types';
+import { MovieInfo, MovieVideos } from './components';
+import { MoviePageProps } from './types';
 
-export default async function MoviePage({
-  params,
-}: Readonly<PageParamsProps<MoviePageParams>>) {
-  const moviesService = new MoviesService();
-  const [movie, videos] = await Promise.all([
-    moviesService.getMovie(params.id, { lazySeconds: 1 }),
-    moviesService.getVideos(params.id, { lazySeconds: 1 }),
-  ]);
-
+export default async function MoviePage(props: MoviePageProps) {
   return (
     <div>
-      <h1>{movie.title}</h1>
-      <div>id : {params.id}</div>
-      <div>
-        <h3>Videos</h3>
-        <ul>
-          {videos.map((video) => (
-            <li key={video.id}>{video.name}</li>
-          ))}
-        </ul>
-      </div>
+      <Suspense fallback={<h2>Loading Movie info</h2>}>
+        <MovieInfo {...props} />
+      </Suspense>
+      <Suspense fallback={<h2>Loading Movie Videos</h2>}>
+        <MovieVideos {...props} />
+      </Suspense>
     </div>
   );
 }
