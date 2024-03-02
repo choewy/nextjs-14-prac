@@ -41,7 +41,7 @@ export default function App() {
 npm run dev
 ```
 
-## Structures
+## Routing
 
 - `app/page.tsx` : root page
 - `{path}/page.tsx` : child page
@@ -56,3 +56,7 @@ npm run dev
   - http://localhost:3000/teams/sales -> 200
 - `/about/teams/components/avatar.tsx`
   - http://localhost:3000/components -> 404
+
+### Not Found Page
+
+- `/app/not-found.tsx` : custom 404 page
