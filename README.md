@@ -54,3 +54,5 @@ npm run dev
 - `/about/teams/sales/page.tsx`
   - http://localhost:3000/teams -> 404
   - http://localhost:3000/teams/sales -> 200
+- `/about/teams/components/avatar.tsx`
+  - http://localhost:3000/components -> 404
