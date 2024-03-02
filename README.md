@@ -160,4 +160,30 @@ export default function Navigation() {
 - route groups는 폴더명을 괄호로 묶어주어야 한다.
 - 괄호로 묶어준 폴더는 라우팅에 영향을 받지 않는다.
 - Metadata는 대체가 아니라 병합이다.
-- Page마다 Metadata를 설정할 수 있고, Layout에서 페이지에 따른 metadata generation까지 가증하다.
+- Page마다 Metadata를 설정할 수 있고, Layout에서 페이지에 따른 metadata generation까지 가능하다.
+
+## Dynamic Routes
+
+- 동적 라우팅은 대괄호 안에 파라미터명을 적은 폴더 안에 page.tsx를 위치시키면 된다.
+- 이때, 해당 페이지로 넘어오는 props는 path paramas인 `params`, query string params인 `searchParams` 가 넘어온다.
+- 그리고, 이 props를 console로 찍어보면 웹 브라우저 콘솔이 아닌 서버 쪽 콘솔에 찍히는 것을 확인할 수 있다(SSR).
+
+- `/app/(movies)/movies/[id]/page.tsx`
+
+```tsx
+export type MovieDetailsPageProps = Readonly<{
+  params: { id: number };
+  searchParams: {};
+}>;
+
+export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
+  console.log(params.id);
+
+  return (
+    <div>
+      <h1>Movie Details</h1>
+      <div>id : {params.id}</div>
+    </div>
+  );
+}
+```
