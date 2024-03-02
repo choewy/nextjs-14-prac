@@ -1,10 +1,12 @@
 # NextJS 14 Practice
 
+NextJS 14를 실행하기 위해서는 Node.js 버전이 18.17.0 이상이어야 함.
+
 > You are using Node.js 18.16.0. For Next.js, Node.js version >= v18.17.0 is required.
 
-## Setup(manually)
+## 설정(수동)
 
-- install dependencies
+- 의존성 설치
 
 ```bash
 npm init -y
@@ -17,7 +19,7 @@ npm i react@latest next@latest react-dom@latest
 mkdir app
 ```
 
-- create `app/page.tsx`
+- `app/page.tsx` 생성 후 아래와 같은 코드 작성
 
 ```tsx
 export default function App() {
@@ -25,7 +27,7 @@ export default function App() {
 }
 ```
 
-- edit package.json scripts
+- package.json의 scripts 추가 후 실행
 
 ```json
 {
@@ -35,19 +37,19 @@ export default function App() {
 }
 ```
 
-- run
-
 ```bash
 npm run dev
 ```
 
-## Routing
+> 앱을 실행하면 NextJS에서 알아서 TypeScript 설정 및 `/app/layout.tsx` 파일 생성
+
+## 라우팅
 
 - `app/page.tsx` : root page
 - `{path}/page.tsx` : child page
-- `{path}/[:params]/page.tsx` : child page(with path params)
+- `{path}/[:params]/page.tsx` : child page(with. path params)
 
-### for example
+### 예시
 
 - `/about/page.tsx`
   - http://localhost:3000/about -> 200
@@ -59,4 +61,4 @@ npm run dev
 
 ### Not Found Page
 
-- `/app/not-found.tsx` : custom 404 page
+- `/app/not-found.tsx` : 커스텀 404 page
