@@ -77,3 +77,45 @@ npm run dev
 
 - 웹 브라우저에서 JS 비활성화 시(또는, 클라이언트가 JS를 받지 못한 경우) Navigator는 순수 `<a>` 태그로 동작함(새로고침 됨)
 - 웹 브라우저에서 JS 활성화 시(또는, 클라이언트가 JS를 받은 경우) Navigator는 React가 통제하고 있는 `<a>` 태그로 동작함(새로고침 안 됨)
+- hydration 과정은 맨 위에 `use client` 지시어가 입력된 component에만 동작한다.
+
+- `/components/navigation.tsx`
+
+```tsx
+'use client';
+
+import Link from 'next/link';
+
+import { PageStaticPath } from '../constants';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+
+export default function Navigation() {
+  const pathname = usePathname();
+  const hereIcon = (path: PageStaticPath) => (pathname === path ? '👈' : '');
+
+  const [count, setCount] = useState<number>(0);
+
+  return (
+    <nav>
+      <button onClick={() => setCount((prev) => prev + 1)}>{count}</button>
+      <ul>
+        <li>
+          <Link href={PageStaticPath.Home}>
+            Home {hereIcon(PageStaticPath.Home)}
+          </Link>
+        </li>
+        <li>
+          <Link href={PageStaticPath.About}>
+            About {hereIcon(PageStaticPath.About)}
+          </Link>
+        </li>
+      </ul>
+    </nav>
+  );
+}
+```
+
+> `use client` 지시어를 사용한다는 것은 서버에서 render 된 후 front에서 hydrate된다는 것을 의미한다(client에서만 render된다는 의미가 아님).
+> 이는 클라이언트가 JS를 더 적게 다운로드받아도 된다는 의미가 된다. -> 페이지 로딩 속도 빨라짐
+> 반면, `use client` 지시어가 없는 컴포넌트는 server component이다.
