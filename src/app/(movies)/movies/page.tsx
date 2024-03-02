@@ -1,13 +1,15 @@
 import { Metadata } from 'next';
 
-import { fetchMovies } from '@services';
+import { MoviesService } from '@services';
 
 export const metadata: Metadata = {
   title: 'Movies',
 };
 
+const moviesService = new MoviesService();
+
 export default async function MoviesPage() {
-  const movies = await fetchMovies();
+  const movies = await moviesService.getMovies();
 
   return (
     <div>
