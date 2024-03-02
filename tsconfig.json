@@ -15,10 +15,17 @@
     "plugins": [{ "name": "next" }],
     "baseUrl": ".",
     "paths": {
-      "@constants": ["constants"],
-      "@components": ["components"]
+      "@constants": ["src/constant"],
+      "@components": ["src/components"],
+      "@services": ["src/services"],
+      "@hooks": ["src/hooks"]
     }
   },
-  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "src/next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
   "exclude": ["node_modules"]
 }
