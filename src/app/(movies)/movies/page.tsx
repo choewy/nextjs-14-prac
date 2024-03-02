@@ -1,20 +1,18 @@
-'use client';
+import { Metadata } from 'next';
 
-import { useState } from 'react';
+import { fetchMovies } from '@services';
 
-import { MovieModel } from '@types';
-import { useFetchMovies } from '@hooks';
+export const metadata: Metadata = {
+  title: 'Movies',
+};
 
-export default function MoviesPage() {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [movies, setMovies] = useState<MovieModel[]>([]);
-
-  useFetchMovies(setMovies, setIsLoading);
+export default async function MoviesPage() {
+  const movies = await fetchMovies();
 
   return (
     <div>
       <h1>Movies Page</h1>
-      <div>{isLoading ? 'Loading...' : JSON.stringify(movies, null, 2)}</div>
+      <div>{JSON.stringify(movies, null, 2)}</div>
     </div>
   );
 }

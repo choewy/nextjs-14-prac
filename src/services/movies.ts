@@ -1,4 +1,4 @@
-import { MovieModel } from '@constants';
+import { MovieModel } from '@types';
 
 const baseUrl = 'https://nomad-movies.nomadcoders.workers.dev';
 
