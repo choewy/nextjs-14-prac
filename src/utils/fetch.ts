@@ -31,7 +31,7 @@ export class Fetch {
     if (lazySeconds == null) {
       return 0;
     } else {
-      return lazySeconds / 1000;
+      return lazySeconds * 1000;
     }
   }
 

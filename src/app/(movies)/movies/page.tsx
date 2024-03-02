@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 const moviesService = new MoviesService();
 
 export default async function MoviesPage() {
-  const movies = await moviesService.getMovies();
+  const movies = await moviesService.getMovies({ lazySeconds: 3 });
 
   return (
     <div>
